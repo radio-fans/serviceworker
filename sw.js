@@ -1,9 +1,8 @@
-this.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open('v1').then(function(cache) {
-      return cache.addAll([
-        '/sw-test/style.css'
-      ]);
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      // Check cache but fall back to network
+      return response || fetch(event.request);
     })
   );
 });
