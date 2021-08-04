@@ -3,7 +3,7 @@ addEventListener('install', event => {
 		const cache = await caches.open('radiofansreceptorcache');
 		return cache.addAll([
 			'',
-			'logo.js'
+			'logo.png'
 		]);
 	};
 	event.waitUntil(preCache());
