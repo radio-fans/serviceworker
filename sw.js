@@ -1,8 +1,6 @@
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', async function(event) {
   event.respondWith(
-    caches.match(event.request).then(function(response) {
-      // Check cache but fall back to network
-      return response || fetch(event.request);
-    })
+    const response = await caches.match(event.request);
+    return response || fetch(event.request);
   );
 });
