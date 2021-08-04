@@ -1,3 +1,4 @@
-self.addEventListener('fetch', function(e) {
-	e.respondWith(caches.match(e.request).then(response => response || fetch(e.request)))
+self.addEventListener('fetch', async function(e) {
+	const r = await caches.match(e.request);
+	e.respondWith(r || fetch(e.request))
 });
